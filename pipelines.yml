@@ -2,12 +2,12 @@ template: true
 valuesFilePath: ./values.yml
 
 resources:
-  {{ range $i, $e := until 2 }}
+  {{ range $i, $e := until 1 }}
   - name: git{{$i}}
     type: GitRepo
     configuration:
-      path: ~bharathu/test-repository
-      gitProvider: bbs
+      path: bharath92/test-repository
+      gitProvider: github
       branches:
         include: {{gitBranch}}
   {{ end }}
@@ -22,7 +22,7 @@ pipelines:
         execution:
           onExecute:
             - echo foo
-      {{ range $i, $e := until 2 }}
+      {{ range $i, $e := until 1 }}
       - name: step{{$i}}
         type: Bash
         configuration:
@@ -42,7 +42,7 @@ pipelines:
           runtime:
             type: host
           inputSteps:
-            {{ range $i, $e := until 2 }}
+            {{ range $i, $e := until 1 }}
             - name: step{{$i}}
             {{ end }}
         execution:
