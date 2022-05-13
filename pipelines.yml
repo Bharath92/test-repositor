@@ -1,6 +1,8 @@
 template: true
 valuesFilePath: ./values.yml
 
+
+
 resources:
   {{ range $i, $e := until 1 }}
   - name: git{{$i}}
